@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dress Collection Management System</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'dresses', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+   
+    
+  </head>
+  
+  <header>
+  <h1>Dress Collection Management System</h1>
+  </header>
+  <body>
+  <div class="container"> 
+  <h2>Welcome To Dress Mart</h2>
+  </div>
+   <nav>
+      <ul>
+        <li><%= link_to "Categories", categories_path  %></li>
+        <li><%= link_to "Dresses", dresses_path%></li>
+        <li><%= link_to "Add New Dress", new_dress_path %></li>
+      </ul>
+    </nav>   
+   <%=yield%>      
+  </body>
+</html>

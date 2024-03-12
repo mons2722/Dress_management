@@ -1,0 +1,7 @@
+<h1><%= @category.name %> Dresses</h1>
+<ul>
+  <% @dresses.each do |dress| %>
+    <li><%= dress.name %></li>
+    <!-- Display other dress details as needed -->
+  <% end %>
+</ul>

@@ -1,0 +1,9 @@
+<h1>Dresses</h1>
+
+<ul>
+  <% @dresses.each do |dress| %>
+    <li>
+      <%= link_to dress.name, dress_path(dress) %>
+    </li>
+  <% end %>
+</ul>

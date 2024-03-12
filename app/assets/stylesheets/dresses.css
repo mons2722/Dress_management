@@ -1,0 +1,60 @@
+/* Style for dress details container */
+.dress-details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Style for dress name */
+  .dress-details h1 {
+    margin-top: 0;
+    font-size: 28px;
+    color: #333;
+  }
+  
+  /* Style for dress details */
+  .dress-details p {
+    margin: 5px 0;
+  }
+  
+  .button-container {
+    display: flex; /* Make the container a flex container */
+    justify-content: center; /* Center the buttons horizontally */
+    margin-top: 20px; /* Add some margin on top for spacing */
+  }
+  
+  .edit-button,
+  .delete-button,
+  .back-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .edit-button {
+    background-color: #007bff; /* Blue color for edit button */
+  }
+  
+  .delete-button {
+    background-color: #dc3545; /* Red color for delete button */
+  }
+  .back-button {
+    background-color: #6c757d; /* Gray color for back button */
+  }
+  
+  .edit-button,
+  .delete-button,
+  .back-button {
+    margin-right: 10px; /* Add some space between buttons */
+  }
+  
+  .edit-button:hover,
+  .delete-button:hover,
+  .back-button:hover {
+    opacity: 0.8; /* Reduce opacity on hover */
+  }
