@@ -1,7 +1,73 @@
-<h1>Categories</h1>
 
-<ul>
-  <% @categories.each do |category| %>
-    <li><%= link_to category.name, category_path(category) %></li>
-      <% end %>
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Categories</title>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center; /* Center the heading */
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 20px;
+    background-color: #f0f0f0; /* Light gray background for list items */
+    padding: 15px; /* Add padding to list items */
+    border-radius: 5px; /* Rounded corners for list items */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    transition: transform 0.3s ease; /* Add transition effect */
+  }
+
+  li:hover {
+    transform: translateY(-5px); /* Move list items up on hover */
+  }
+
+  a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 20px;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: #0056b3;
+  }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Categories</h1>
+  <ul>
+    <% @categories.each do |category| %>
+      <li><%= link_to category.name, category_path(category) %></li>
+    <% end %>
+  </ul>
+</div>
+
+</body>
+</html>

@@ -1,7 +1,64 @@
-<h1><%= @category.name %> Dresses</h1>
-<ul>
-  <% @dresses.each do |dress| %>
-    <li><%= dress.name %></li>
-    <!-- Display other dress details as needed -->
-  <% end %>
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Category</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 24px; /* Decreased font size for dresses */
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Category: <%= @category.name %></h1>
+  <h2>Dresses</h2>
+  <ul>
+    <% @category.dresses.each do |dress| %>
+      <li><%= link_to dress.name, dress_path(dress) %></li>
+    <% end %>
+  </ul>
+</div>
+
+</body>
+</html>

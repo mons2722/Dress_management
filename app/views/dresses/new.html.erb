@@ -1,44 +1,133 @@
-<h2>Add New Dress</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Dress</title>
+  <style>
+    /* Global styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
 
-<%= form_with(model: @dress, url: dresses_path, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-  <div class="field">
-    <%= form.label :size %>
-    <%= form.text_field :size %>
-  </div>
+    /* Heading styles */
+    h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+    }
 
-  <div class="field">
-    <%= form.label :color %>
-    <%= form.text_field :color %>
-  </div>
+    /* Form field styles */
+    .field {
+      margin-bottom: 20px;
+    }
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
+    label {
+      font-size: 18px;
+      color: #555;
+      display: block;
+      margin-bottom: 5px;
+    }
 
-  <div class="field">
-    <%= form.label :material %>
-    <%= form.text_field :material %>
-  </div>
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
 
-  <div class="field">
-    <%= form.label :stock %>
-    <%= form.number_field :stock %>
-  </div>
+    /* Submit button styles */
+    .actions {
+      margin-top: 20px;
+    }
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.collection_select :category_id, Category.all, :id, :name %>
-  </div>
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-  <div class="actions">
-    <%= form.submit "Create Dress" %>
-  </div>
-<% end %>
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
 
-<%= link_to "Back", dresses_path %>
+    /* Back link styles */
+    a {
+      text-decoration: none;
+      color: #007bff;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Add New Dress</h2>
+  <%= form_with(model: @dress, url: dresses_path, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :size %>
+      <%= form.text_field :size %>
+    </div>
+
+    <div class="field">
+      <%= form.label :color %>
+      <%= form.text_field :color %>
+    </div>
+
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_field :price %>
+    </div>
+
+    <div class="field">
+      <%= form.label :material %>
+      <%= form.text_field :material %>
+    </div>
+
+    <div class="field">
+      <%= form.label :stock %>
+      <%= form.number_field :stock %>
+    </div>
+
+    <div class="field">
+      <%= form.label :category_id %>
+      <%= form.collection_select :category_id, Category.all, :id, :name %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Create Dress" %>
+    </div>
+  <% end %>
+
+  <%= link_to "Back", dresses_path %>
+</div>
+
+</body>
+</html>

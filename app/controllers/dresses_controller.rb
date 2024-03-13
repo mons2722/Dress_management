@@ -8,11 +8,13 @@ class DressesController < ApplicationController
       end
     
       def edit 
+        @dress = Dress.find(params[:id])
       end
       def create
         @dress = Dress.new(dress_params)
         if @dress.save
-          redirect_to dresses_path, notice: 'Dress was successfully created.'
+          flash[:success] = "Successfully Created"
+          redirect_to dresses_path
         else
           render :new
         end
@@ -20,7 +22,8 @@ class DressesController < ApplicationController
        
       def update
         if @dress.update(dress_params)
-          redirect_to @dress, notice: 'Dress was successfully updated.'
+          flash[:success] = "Successfully updated"
+          redirect_to @dress 
         else
           render :edit
         end
@@ -29,9 +32,9 @@ class DressesController < ApplicationController
       def destroy
         @dress = Dress.find(params[:id])
         @dress.destroy
-        redirect_to dresses_path, notice: 'Dress was successfully deleted.'
+        flash[:success] = "Successfully deleted"
+        redirect_to dresses_path
       end
-
       private
       def set_dress
         @dress = Dress.find(params[:id])

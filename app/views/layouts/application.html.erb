@@ -2,31 +2,159 @@
 <html>
   <head>
     <title>Dress Collection Management System</title>
+    <style>
+    .flash-container {
+      border: 5px solid #000;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background-color: white;
+     }
+    
+    .flash-message {
+      background-color: white;
+     
+      border-radius: 10px; 
+      padding: 20px 40px; /* Increased padding for more space */
+      margin-bottom: 20px; /* Increased margin for better separation */
+      font-size: 20px; /* Increased font size for better visibility */
+    }
+    
+    .flash-success {
+      color: Green;
+      font-weight: bold;
+    }
+    
+    .flash-error {
+      color: red;
+    }
+    
+    .flash-ok-button {
+      display: inline-block; /* Changed to inline-block for better sizing */
+      padding: 10px 20px; /* Increased padding for a bigger button */
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 10px; /* Increased border radius for a bigger appearance */
+      cursor: pointer;
+      font-size: 18px; /* Increased font size for better visibility */
+      margin-bottom: 10px; /* Adjusted margin-bottom for spacing */
+     }
+    
+    .flash-ok-button:hover {
+      background-color: #0056b3;
+    }
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 200px; /* Adjust the width as needed */
+      background-color: #f0f0f0; /* Background color of the sidebar */
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    
+    .sidebar nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      color: #f0f0f0;
+    }
+    
+    .sidebar nav ul li {
+      margin-bottom: 10px;
+      color: #f0f0f0;
+    }
+    
+    .sidebar nav ul li a {
+      text-decoration: none;
+      color: #000;
+      font-size: 18px;
+      background-color: white;
+      font-weight: bold;
+    }
+    
+    .sidebar nav ul li a:hover {
+      color: #ff5733;
+    }
+    .sidebar nav ul li.active a {
+      background-color: blue;
+      color: white;
+    }
+    .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: glitter 5s infinite alternate; /* Apply glitter animation */
+  }
+
+    @keyframes glitter {
+    0% {
+      border: 3px solid #ff0000; /* Red border */
+    }
+    25% {
+      border: 3px solid #00ff00; /* Green border */
+    }
+    50% {
+      border: 3px solid #0000ff; /* Blue border */
+    }
+    75% {
+      border: 3px solid #ffff00; /* Yellow border */
+    }
+    100% {
+      border: 3px solid #ff00ff; /* Magenta border */
+    }
+
+
+  }
+
+ 
+ </style>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application","data-turbolinks-track": "reload" %>
     <%= stylesheet_link_tag 'dresses', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_importmap_tags %>
-   
-    
-  </head>
+ </head>
   
-  <header>
-  <h1>Dress Collection Management System</h1>
-  </header>
+ 
   <body>
+  <header>
+  <head1>Dress Collection Management System</head1>
+  </header>
   <div class="container"> 
   <h2>Welcome To Dress Mart</h2>
   </div>
-   <nav>
-      <ul>
-        <li><%= link_to "Categories", categories_path  %></li>
-        <li><%= link_to "Dresses", dresses_path%></li>
-        <li><%= link_to "Add New Dress", new_dress_path %></li>
-      </ul>
-    </nav>   
-   <%=yield%>      
+  <aside class="sidebar">
+  <h2 style="text-align: center;">Menu</h2>
+  <nav>
+    <ul>
+      <li><%= link_to "Categories", categories_path %></li>
+      <li><%= link_to "Dresses", dresses_path %></li>
+      <li><%= link_to "Add New Dress", new_dress_path%></li>
+    </ul>
+  </nav>
+</aside>
+    <% flash.each do |type, message| %>
+      <div class="flash-container">
+        <div class="flash-message flash-<%= type %>">
+          <%= message %>
+        </div>
+        <button class="flash-ok-button" onclick="this.parentNode.style.display = 'none';">OK</button>
+      </div>
+    <% end %>
+   
+   <%=yield%> 
+   
+   
   </body>
 </html>

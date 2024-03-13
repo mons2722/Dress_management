@@ -1,9 +1,66 @@
-<h1>Dresses</h1>
 
-<ul>
-  <% @dresses.each do |dress| %>
-    <li>
-      <%= link_to dress.name, dress_path(dress) %>
-    </li>
-  <% end %>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dresses</title>
+  <style>
+    /* Global styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Heading styles */
+    h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    /* List styles */
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    /* Dress item styles */
+    li {
+      margin-bottom: 20px;
+    }
+
+    /* Link styles */
+    a {
+      text-decoration: none;
+      color: #007bff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Dresses</h1>
+  <ul>
+    <% @dresses.each do |dress| %>
+      <li><%= link_to dress.name, dress_path(dress) %></li>
+    <% end %>
+  </ul>
+</div>
+
+</body>
+</html>
