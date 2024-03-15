@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   #get "up" => "rails/health#show", as: :rails_health_check
 
   #resources
-  resources :categories,  only: [:index, :show]
+  resources :categories
   resources :dresses
   # Defines the root path route ("/")
   # root "posts#index"
   delete '/dresses/:id', to: 'dresses#destroy', as: 'delete_dress'
-
+  delete '/categories/:id', to: 'categories#destroy', as: 'delete_category'
   root to: 'categories#index'
 end

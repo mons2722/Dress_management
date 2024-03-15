@@ -3,71 +3,182 @@
 <html>
 <head>
   <title>Categories</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-  }
+    body {
+      font-family: Arial, sans-serif;
+      background-color:#fff;
+      padding: 0;
+          }
 
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative; /* Make the container relative for absolute positioning */
+    }
+    
 
-  h1 {
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 30px;
-    text-align: center; /* Center the heading */
-  }
+    h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 30px;
+      text-align: center; /* Center the heading */
+    }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
 
-  li {
-    margin-bottom: 20px;
-    background-color: #f0f0f0; /* Light gray background for list items */
-    padding: 15px; /* Add padding to list items */
-    border-radius: 5px; /* Rounded corners for list items */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow effect */
-    transition: transform 0.3s ease; /* Add transition effect */
-  }
+    .link {
+      position: relative; /* Make the list items relative for absolute positioning */
+      margin-bottom: 20px;
+      background-color: #f0f0f0; /* Light gray background for list items */
+      padding: 15px; /* Add padding to list items */
+      border-radius: 5px; /* Rounded corners for list items */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+      transition: transform 0.3s ease; /* Add transition effect */
+    }
 
-  li:hover {
-    transform: translateY(-5px); /* Move list items up on hover */
-  }
+    .link:hover {
+      transform: translateY(-5px); /* Move list items up on hover */
+    }
 
-  a {
-    text-decoration: none;
-    color: #007bff;
-    font-size: 20px;
-    transition: color 0.3s ease;
-  }
+    a {
+      text-decoration: none;
+      color: #007bff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
 
-  a:hover {
-    color: #0056b3;
-  }
+    a:hover {
+      color: #0056b3;
+    }
 
+    .icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 20px;
+    }
+
+    .delete-icon {
+      color: red; /* Color for the delete icon */
+      right: 45px; /* Adjust the positioning */
+    }
+
+    .add-category-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #f0f0f0; /* Background color for the round background */
+      color: #f0f0f0;; /* Color for the "+" icon */
+      border-radius: 50%; /* Make it round */
+      width: 40px; /* Adjust the width and height for the size of the round background */
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      z-index: 1; /* Ensure the icon is above other content */
+    }
+    .flash-container {
+      border: 5px solid #000;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background-color: white;
+     }
+    
+    .flash-message {
+      background-color: white;
+     
+      border-radius: 10px; 
+      padding: 20px 40px; /* Increased padding for more space */
+      margin-bottom: 20px; /* Increased margin for better separation */
+      font-size: 20px; /* Increased font size for better visibility */
+    }
+    
+    .flash-success {
+      color: Green;
+      font-weight: bold;
+    }
+    
+    .flash-error {
+      color: red;
+    }
+    
+    .flash-ok-button {
+      display: inline-block; /* Changed to inline-block for better sizing */
+      padding: 10px 20px; /* Increased padding for a bigger button */
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 10px; /* Increased border radius for a bigger appearance */
+      cursor: pointer;
+      font-size: 18px; /* Increased font size for better visibility */
+      margin-bottom: 10px; /* Adjusted margin-bottom for spacing */
+     }
+    
+    .flash-ok-button:hover {
+      background-color: #0056b3;
+    }
+    .cover
+   { margin-right: 220px;
+  }
+  
+  img {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 310px; /* Adjust the width as needed */
+    height: 100%;
+    z-index: 9999; /* Ensure it's on top of other content */
+  }
   </style>
 </head>
 <body>
-
+<div class="cover">
+<%= image_tag "mainpg.jpg" %>
+</div>
 <div class="container">
   <h1>Categories</h1>
+  <div class="add-category-icon">
+    <%= link_to new_category_path do %>
+      <i class="fas fa-plus"></i>
+    <% end %>
+  </div>
   <ul>
     <% @categories.each do |category| %>
-      <li><%= link_to category.name, category_path(category) %></li>
+      <div class="link">
+      <%= form_with(model: category, method: :delete, url: category_path(category), data: { confirm: "Are you sure you want to delete #{category.name}?" }) do |form| %>
+  <div style="display: flex; align-items: center; justify-content: space-between;">
+  <div style="flex-grow: 1; text-align: center;">
+  <%= link_to category.name, category_path(category) %>
+</div>
+    <%= form.button class: "delete-button" do %>
+      <i class="fas fa-trash"></i> 
+    <% end %>
+  </div>
+<% end %>
+        </div>
     <% end %>
   </ul>
 </div>
-
+<% flash.each do |type, message| %>
+  <div class="flash-container">
+    <div class="flash-message flash-<%= type %>">
+      <%= message %>
+    </div>
+    <button class="flash-ok-button" onclick="this.parentNode.style.display = 'none';">OK</button>
+  </div>
+<% end %>
 </body>
 </html>

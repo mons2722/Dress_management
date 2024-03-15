@@ -1,55 +1,38 @@
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-  }
-   header head1{color: #fff;
-    padding: 10px 0;
-    text-align: center;
-    background-color: #333;}
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-  }
+ /* Style for the body */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fcfafa; /* Baby pink background color */
+}
 
-  h2{
-    font-size:36px;
-    color:black;
-    text-align: center;
-  }
-  
- 
- 
-  
 /* Style for the heading */
 h1 {
+max-width:790px;
   font-size: 24px;
   color: #333;
   margin-bottom: 20px;
+  text-align: center; /* Center the heading */
 }
 
 /* Style for the list */
-cont {
+ul {
   list-style-type: none;
   padding: 0;
 }
 
 /* Style for list items */
-cont link {
+ul li {
   margin-bottom: 10px;
 }
 
 /* Style for links */
-cont link a {
+ul li a {
   text-decoration: none;
   color: #007bff; /* Blue color for links */
 }
 
 /* Style for link hover */
-cont link a:hover {
+ul li a:hover {
   color: #0056b3; /* Darker blue color on hover */
 }
-
