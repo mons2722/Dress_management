@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,24 +129,11 @@
     .flash-ok-button:hover {
       background-color: #0056b3;
     }
-    .cover
-   { margin-right: 220px;
-  }
-  
-  img {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 310px; /* Adjust the width as needed */
-    height: 100%;
-    z-index: 9999; /* Ensure it's on top of other content */
-  }
+    
   </style>
 </head>
 <body>
-<div class="cover">
-<%= image_tag "mainpg.jpg" %>
-</div>
+
 <div class="container">
   <h1>Categories</h1>
   <div class="add-category-icon">
@@ -163,9 +149,9 @@
   <div style="flex-grow: 1; text-align: center;">
   <%= link_to category.name, category_path(category) %>
 </div>
-    <%= form.button class: "delete-button" do %>
-      <i class="fas fa-trash"></i> 
-    <% end %>
+<%= form.button class: "delete-button", style: "background-color: #D37676; color: white; border: none; padding: 5px 10px; border-radius: 5px;" do %>
+  <i class="fas fa-trash"></i>
+<% end %>
   </div>
 <% end %>
         </div>

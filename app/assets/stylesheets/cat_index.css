@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color:#fff;
+    padding: 0;
+        }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative; /* Make the container relative for absolute positioning */
+  }
+  
+  h1 {
+    font-size: 32px;
+    color: #000;
+    margin-bottom: 30px;
+    text-align: center; /* Center the heading */
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .link {
+    position: relative; /* Make the list items relative for absolute positioning */
+    margin-bottom: 20px;
+    background-color: #f0f0f0; /* Light gray background for list items */
+    padding: 15px; /* Add padding to list items */
+    border-radius: 5px; /* Rounded corners for list items */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    transition: transform 0.3s ease; /* Add transition effect */
+  }
+
+  .link:hover {
+    transform: translateY(-5px); /* Move list items up on hover */
+  }
+
+  a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 20px;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: #0056b3;
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+  }
+
+  .delete-icon {
+    color: red;
+     right: 35px; 
+}
+  .add-category-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #f0f0f0; /* Background color for the round background */
+    color: #f0f0f0;; /* Color for the "+" icon */
+    border-radius: 50%; /* Make it round */
+    width: 40px; /* Adjust the width and height for the size of the round background */
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    z-index: 1; /* Ensure the icon is above other content */
+  }
+  

@@ -3,130 +3,132 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-
-  <%= stylesheet_link_tag 'dresses', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_link_tag "application" %>
+  <%= csp_meta_tag %> 
+  <%= stylesheet_link_tag 'application',media:'all', 'data-turbolinks-track':'reload' %>
 
   <title>Dress Collection Management System</title>
-
+  
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+  }
+  
+  .flash-container {
+    border: 5px solid #000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: white;
+  }
+  
+  .flash-message {
+    background-color: white;
+    border-radius: 10px; 
+    padding: 20px 40px;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  
+  .flash-success {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .flash-error {
+    color: red;
+  }
+  
+  .flash-ok-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .flash-ok-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #222831;
+    padding: 20px;
+    box-sizing: border-box;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-radius: 0 10px 10px 0;
+  }
+  
+  .sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #f0f0f0;
+  }
+  
+  .sidebar nav ul li {
+    margin-bottom: 10px;
+    color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  .sidebar nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    background-color: white;
+   font-weight:800;
     }
-
-    .flash-container {
-      border: 5px solid #000;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      background-color: white;
+  
+  .sidebar nav ul li a:hover {
+    color: #ff5733;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 5px solid #000;
     }
-
-    .flash-message {
-      background-color: white;
-      border-radius: 10px; 
-      padding: 20px 40px;
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
-
-    .flash-success {
-      color: green;
-      font-weight: bold;
-    }
-
-    .flash-error {
-      color: red;
-    }
-
-    .flash-ok-button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .flash-ok-button:hover {
-      background-color: #0056b3;
-    }
-
-    .sidebar {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 250px;
-      background-color: #ccf2f4;
-      padding: 20px;
-      box-sizing: border-box;
-      border-right: 2px solid #fff;
-      border-bottom: 2px solid #fff;
-      border-radius: 0 10px 10px 0;
-    }
-
-    .sidebar nav ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      color: #f0f0f0;
-    }
-
-    .sidebar nav ul li {
-      margin-bottom: 10px;
-      color: #f0f0f0;
-      border-radius: 5px;
-    }
-
-    .sidebar nav ul li a {
-      text-decoration: none;
-      color: #000;
-      font-size: 18px;
-      background-color: white;
-      font-weight: bold;
-    }
-
-    .sidebar nav ul li a:hover {
-      color: #ff5733;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      border: 5px solid #000;
-      }
-
-    .cover {
-      margin-right: 220px;
-    }
-
-    img {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 310px;
-      height: 100%;
-      z-index: 9999;
-    }
-    /* Active link styles */
+  
+  .cover {
+    margin-right: 220px;
+  }
+  
+  img {
+     position: fixed;
+    top: 0;
+    right: 0;
+    width: 310px;
+    height: 100%;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+  /* Active link styles */
   .active {
+    padding:10px;
+  margin-bottom:15px;
+  border-radius:20px;
   background-color: pink !important; /* Change the background color as needed */
   color: white !important; /* Change the text color as needed */
- }
+  }
   </style>
 </head>
 <body>
@@ -134,7 +136,7 @@
     <h2>Welcome To Dress Mart</h2>
   </div>
   <aside class="sidebar">
-    <h2 style="text-align: center;">Menu</h2>
+    <h2 style="text-align: center; color:white;">Menu</h2>
     <nav>
   <ul>
     <li class="<%= active_class(categories_path) %>"><%= link_to "Categories", categories_path %></li>

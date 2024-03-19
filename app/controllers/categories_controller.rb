@@ -1,16 +1,14 @@
 class CategoriesController < ApplicationController
-    def some_action
-        @category = Category.find(params[:id]) # Or assign it in some other way
-      end
+    
     def index
         @categories=Category.all
     end
 
-     def show
-        @category = Category.find(params[:id])
-        @dresses = @category.dresses
-      end
-
+    def show
+      @category = Category.find(params[:id])
+      @dresses = @category.dresses.paginate(page: params[:page], per_page: 10) 
+    end
+    
       def destroy
         @category = Category.find(params[:id])
         @category.destroy
@@ -22,12 +20,20 @@ class CategoriesController < ApplicationController
       end
     
       def create
-        @category = Category.new(category_params)
-        if @category.save
-          flash[:success] = "Category created successfully!"
+        existing_category = Category.where('lower(name) = ?', category_params[:name].downcase).first
+      
+        if existing_category
+          flash[:error] = "Failed to create the category. The category already exists."
           redirect_to categories_path
         else
-          render 'new'
+          @category = Category.new(category_params)
+      
+          if @category.save
+            flash[:success] = "Category created successfully!"
+            redirect_to categories_path
+          else
+            render 'new'
+          end
         end
       end
 
