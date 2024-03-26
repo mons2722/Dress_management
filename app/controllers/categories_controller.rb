@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
 
     def show
       @category = Category.find(params[:id])
-      @dresses = @category.dresses.paginate(page: params[:page], per_page: 10) 
+      @dresses = @category.dresses.paginate(page: params[:page], per_page: 10)
     end
     
       def destroy

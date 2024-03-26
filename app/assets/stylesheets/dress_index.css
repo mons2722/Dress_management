@@ -1,8 +1,18 @@
 /* General styles */
 .container {
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container2 {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #fff;
+  border-radius: 10px; 
+  position: relative;
+  text-align: center;
 }
 
 h1 {
@@ -93,4 +103,69 @@ a:hover {
 
 * html .digg_pagination {
   height: 1%;
+}
+
+/* Container for the dresses grid */
+.dresses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust the column width as needed */
+  grid-gap: 20px; /* Adjust the gap between grid items */
+}
+
+/* Individual dress card */
+.dress-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: ;
+}
+
+.dress-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.dress-card p {
+  margin: 5px 0;
+}
+
+.dress-image img {
+  max-width: 60%; /* Ensure the image doesn't exceed the container width */
+  height: 40% ;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.button-container {
+  display: flex; /* Make the container a flex container */
+  justify-content: center; /* Center the buttons horizontally */
+  margin-top: 20px; /* Add some margin on top for spacing */
+}
+
+.edit-button,
+.delete-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #007bff; /* Blue color for edit button */
+}
+
+.delete-button {
+  background-color: #dc3545; /* Red color for delete button */
+}
+
+
+.edit-button,
+.delete-button{
+  margin-right: 10px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  opacity: 0.8; /* Reduce opacity on hover */
 }

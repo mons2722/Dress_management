@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,15 +8,31 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container2">
   <h1>Dresses</h1>
-  <ul>
+  <div class="dresses-grid">
     <% @dresses.each do |dress| %>
-      <li><%= link_to dress.name, dress_path(dress) %></li>
+      <div class="dress-card">
+        <h2><%= link_to dress.name, dress_path(dress) %></h2>
+        <p>Size: <%= dress.size %></p>
+        <p>Color: <%= dress.color %></p>
+        <p>Price: <%= dress.price %></p>
+        <p>Material: <%= dress.material %></p>
+        <p>Stock: <%= dress.stock %></p>
+        <% if dress.image.attached? %>
+          <div class="dress-image">
+            <%= image_tag dress.image %>
+          </div>
+        <% end %>
+        <div class="button-container">
+          <%= link_to "Edit", edit_dress_path(dress), class: "edit-button" %>
+          <%= form_tag dress_path(dress), method: :delete, data: { confirm: "Are you sure you want to delete this dress?" } do %>
+            <%= submit_tag "Delete", class: "delete-button" %>
+          <% end %>
+
+        </div>
+      </div>
     <% end %>
-  </ul>
-  <div class="digg_pagination">
-    <%= will_paginate @dresses %>
   </div>
 </div>
 

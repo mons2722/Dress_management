@@ -7,6 +7,10 @@ class DressesController < ApplicationController
         @dress = Dress.new
       end
     
+      def show
+        @dress = Dress.find(params[:id])
+      end
+
       def edit 
       end
       
@@ -18,8 +22,11 @@ class DressesController < ApplicationController
           redirect_to dresses_path
         else
           @dress = Dress.new(dress_params)
-          
+         
           if @dress.save
+              if params[:dress][:image].present?
+                @dress.image.attach(params[:dress][:image])
+              end
             flash[:success] = "Successfully Created"
             redirect_to dresses_path
           else
@@ -32,7 +39,7 @@ class DressesController < ApplicationController
       def update
         if @dress.update(dress_params)
           flash[:success] = "Successfully updated"
-          redirect_to @dress 
+          redirect_to dresses_path
         else
           flash[:error] = "Failed to Update"
           render :edit
@@ -54,6 +61,6 @@ class DressesController < ApplicationController
       end
 
       def dress_params
-        params.require(:dress).permit(:name, :size, :color, :price, :material, :stock, :category_id)
+        params.require(:dress).permit(:name, :size, :color, :price, :material, :stock, :category_id, :image)
       end
 end

@@ -1,5 +1,5 @@
 <head>
-<%= stylesheet_link_tag 'dresses', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 </head>
 <div class="dress-details">
 <h1><%= @dress.name %></h1>
@@ -9,6 +9,11 @@
 <p>Price: <%= @dress.price %></p>
 <p>Material: <%= @dress.material %></p>
 <p>Stock: <%= @dress.stock %></p>
+<% if @dress.image.attached? %>
+<div class="dress-image">
+  <%= image_tag @dress.image %> 
+</div>
+<% end %>
 
 <div class="button-container">
 <%= link_to "Edit", edit_dress_path(@dress), class: "edit-button" %>

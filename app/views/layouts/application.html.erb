@@ -99,27 +99,34 @@
   }
   
   .container {
-    max-width: 800px;
+    max-width: 100vw;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 5px solid #000;
-    }
-  
-  .cover {
-    margin-right: 220px;
-  }
-  
-  img {
-     position: fixed;
+    position: relative; /* Position relative for absolute positioning of pseudo-element */
+}
+
+.container::after {
+    content: ''; /* Add content for pseudo-element */
+    position: absolute; /* Position absolute to place the pseudo-element at the bottom */
+    bottom: 0; /* Position the pseudo-element at the bottom */
+    left: 0; /* Position the pseudo-element at the left */
+    width: 100%; /* Full width of the container */
+    height: 5px; /* Height of the border */
+    background-image: radial-gradient(circle, #666666, #444444, #222222, #000000);
+    border-radius: 0 0 10px 10px; /* Border radius to match container */
+}
+   
+  .cover img {
+    position: absolute;
     top: 0;
     right: 0;
-    width: 310px;
-    height: 100%;
-    z-index: 9999;
-    opacity: 0.4;
+    width: 250px;
+    height: 130px;
+    # z-index: 9999;
+    border: 5px solid #000;
+  
   }
   /* Active link styles */
   .active {
@@ -133,7 +140,10 @@
 </head>
 <body>
   <div class="container"> 
-    <h2>Welcome To Dress Mart</h2>
+    <h2>Dress Mart</h2>
+    <div class="cover">
+    <%= image_tag "logo.jpg" %>
+  </div>
   </div>
   <aside class="sidebar">
     <h2 style="text-align: center; color:white;">Menu</h2>
@@ -145,9 +155,7 @@
   </ul>
 </nav>
   </aside>
-  <div class="cover">
-    <%= image_tag "mainpg.jpg" %>
-  </div>
+  
   <% flash.each do |type, message| %>
     <div class="flash-container">
       <div class="flash-message flash-<%= type %>">
