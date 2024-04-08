@@ -15,11 +15,17 @@
       <%= form.text_field :name %>
     </div>
 
-    <div class="field">
-  <%= form.label :size %>
-  <%= form.select :size, ['XS', 'S', 'M', 'L', 'XL','Nil'], {} %> 
-</div>
-
+    <div class="field" style="text-align: center;">
+    <%= form.label :sizes, class: "sizes-label" %>
+    <div class="sizes-checkboxes" style="display: inline-block;">
+      <% Size.all.each do |size| %>
+        <label class="size-checkbox" style="display: inline-block; margin-right: 10px;">
+          <%= form.check_box :size_ids, { multiple: true }, size.id, nil %>
+          <%= size.name %>
+        </label>
+      <% end %>
+    </div>
+  </div>
     <div class="field">
       <%= form.label :color %>
       <%= form.text_field :color %>

@@ -9,12 +9,39 @@
 <body>
 
 <div class="container2">
+ 
+<!-- Filters bar -->
+<div class="filters-bar">
+  <%= form_tag(dresses_path, method: :get) do %>
+    <!-- Color filter -->
+    <div class="filter">
+      <%= label_tag :color, "Color:" %>
+      <%= select_tag :color, options_for_select(Dress.distinct.pluck(:color), params[:color]), include_blank: true %>
+    </div>
+    
+    <!-- Category filter -->
+    <div class="filter">
+      <%= label_tag :category_id, "Category:" %>
+      <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name, params[:category_id]), include_blank: true %>
+    </div>
+    
+    <!-- Size filter -->
+    <div class="filter">
+      <%= label_tag :size_id, "Size:" %>
+      <%= select_tag :size_id, options_from_collection_for_select(Size.all, :id, :name, params[:size_id]), include_blank: true %>
+    </div>
+    
+    <%= submit_tag "Filter",class: "filter-button"  %>
+  <% end %>
+</div>
   <h1>Dresses</h1>
+   
+  
   <div class="dresses-grid">
     <% @dresses.each do |dress| %>
       <div class="dress-card">
-        <h2><%= link_to dress.name, dress_path(dress) %></h2>
-        <p>Size: <%= dress.size %></p>
+        <h2><%=dress.name%></h2>
+        <p>Size: <%= dress.sizes.pluck(:name).join('/ ') %></p>
         <p>Color: <%= dress.color %></p>
         <p>Price: <%= dress.price %></p>
         <p>Material: <%= dress.material %></p>
@@ -34,6 +61,14 @@
       </div>
     <% end %>
   </div>
+  <% flash.each do |type, message| %>
+    <div class="flash-container">
+      <div class="flash-message flash-<%= type %>">
+        <%= message %>
+      </div>
+      <button class="flash-ok-button" onclick="this.parentNode.style.display = 'none';">OK</button>
+    </div>
+  <% end %>
 </div>
 
 </body>

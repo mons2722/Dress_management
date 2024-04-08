@@ -87,3 +87,20 @@ body {
       height: 100%;
       z-index: 9999;
     }
+    .sizes-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+     
+    }
+    
+    /* CSS for individual checkbox */
+    .size-checkbox {
+      margin-right: 10px;
+   
+    }
+    
+    /* Styling for individual checkboxes */
+    .size-checkbox input[type="checkbox"] {
+      margin-right: 5px;
+      text-align: center;
+    }

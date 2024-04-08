@@ -31,6 +31,8 @@ gem "redis", ">= 4.0.1"
 
 gem 'will_paginate'
 
+gem 'bcrypt'
+
 
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]

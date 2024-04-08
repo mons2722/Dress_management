@@ -1,100 +1,80 @@
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 32px;
-    color: #000;
-    margin-bottom: 20px;
-  }
-  h3{
-    font-size: 24px; /* Decreased font size for dresses */
-    color: #000;
-    margin-bottom: 10px;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    margin-bottom: 10px;
-  }
-
-  a {
-    text-decoration: none;
-    color: #007bff;
-    font-size: 18px;
-    transition: color 0.3s ease;
-  }
-
-  a:hover {
-    color: #0056b3;
-  }
-
-/* Pagination styles */
-.digg_pagination {
-  background: white;
-  cursor: default;
-  text-align: center; /* Center align the pagination */
-  font-size: 16px; /* Adjust font size */
+.container2 {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.digg_pagination a, .digg_pagination span, .digg_pagination em {
-  padding: 0.2em 0.5em;
-  display: inline-block; /* Display as inline-block for alignment */
-  margin-right: 1px;
+/* Category header styles */
+h1{
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.digg_pagination .disabled {
-  color: #999999;
-  border: 1px solid #dddddd;
+/* Category description styles */
+.category-description {
+  margin-bottom: 20px;
 }
 
-.digg_pagination .current {
-  font-style: normal;
-  font-weight: bold;
-  background: #2e6ab1;
+/* Related dresses styles */
+.dresses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.dress-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  align-items: center;
+}
+
+.dress-card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.dress-card p {
+  margin-bottom: 5px;
+}
+
+.dress-image img {
+  max-width: 60%; /* Ensure the image doesn't exceed the container width */
+  height: 40% ;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px
+}
+
+.button-group {
+  display: flex;
+  gap: 10px; 
+ 
+}
+
+.edit-button, .delete-button {
+  background-color: #4CAF50;
+  border: none;
   color: white;
-  border: 1px solid #2e6ab1;
-}
-
-.digg_pagination a {
+  padding: 10px 20px;
   text-decoration: none;
-  color: #105cb6;
-  border: 1px solid #9aafe5;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+
 }
 
-.digg_pagination a:hover, .digg_pagination a:focus {
-  color: #000033;
-  border-color: #000033;
-}
-
-.digg_pagination .page_info {
-  background: #2e6ab1;
-  color: white;
-  padding: 0.4em 0.6em;
-  width: auto; /* Auto width */
-  margin-bottom: 0.3em;
-}
-
-.digg_pagination .page_info b {
-  color: #000033;
-  background: #6aa6ed;
-  padding: 0.1em 0.25em;
-}
-
-.digg_pagination:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-
-* html .digg_pagination {
-  height: 1%;
+.delete-button {
+  background-color: #f44336;
 }

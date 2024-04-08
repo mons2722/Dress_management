@@ -1,22 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Category</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= @category.name %></title>
   <%= stylesheet_link_tag 'cat_show', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
-
-<div class="container">
-  <h1>Category: <%= @category.name %></h1>
-  <h3>Dresses</h3>
-  <ul>
-    <% @dresses.each do |dress| %>
-      <li><%= link_to dress.name, dress_path(dress) %></li>
+<body>
+<div class="container2">
+  <h1><%= @category.name %></h1>
+ 
+  <div class="dresses-grid">
+    <% @category.dresses.each do |dress| %>
+      <div class="dress-card">
+        <h2><%= dress.name %></h2>
+        <p>Size: <%= dress.sizes.pluck(:name).join('/ ') %></p>
+        <p>Color: <%= dress.color %></p>
+        <p>Price: <%= dress.price %></p>
+        <!-- Add more dress details as needed -->
+        <% if dress.image.attached? %>
+          <div class="dress-image">
+            <%= image_tag dress.image %>
+          </div>
+        <% end %>
+        <div class="button-container">
+        <div class="button-group">
+          <%= link_to "Edit", edit_dress_path(dress), class: "edit-button" %>
+          <%= form_tag dress_path(dress), method: :delete, data: { confirm: "Are you sure you want to delete this dress?" } do %>
+            <%= submit_tag "Delete", class: "delete-button" %>
+          <% end %>
+        </div>
+      </div>
+      
+      </div>
     <% end %>
-  </ul>
-  <div class="digg_pagination">
-    <%= will_paginate @dresses %>
   </div>
 </div>
+
+<% flash.each do |type, message| %>
+  <div class="flash-container">
+    <div class="flash-message flash-<%= type %>">
+      <%= message %>
+    </div>
+    <button class="flash-ok-button" onclick="this.parentNode.style.display = 'none';">OK</button>
+  </div>
+<% end %>
 </body>
 </html>

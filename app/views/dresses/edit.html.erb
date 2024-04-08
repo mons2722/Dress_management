@@ -6,7 +6,7 @@
   </head>
 <body>
 
-<div class="container">
+<div class="container2">
   <h1>Edit Dress</h1>
 
   <%= form_for @dress do |f| %>
@@ -16,8 +16,10 @@
     </div>
 
     <div class="field">
-      <%= f.label :size %>
-      <%= f.text_field :size %>
+    <%= f.label :sizes, class: "sizes-label" %>
+    <div class="sizes-checkboxes">
+      <%= f.collection_check_boxes :size_ids, Size.all, :id, :name, {}, class: "size-checkbox" %>
+    </div>
     </div>
 
     <div class="field">

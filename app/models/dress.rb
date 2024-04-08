@@ -1,11 +1,11 @@
 class Dress < ApplicationRecord
   belongs_to :category
-
+  has_and_belongs_to_many :sizes  
 
    has_one_attached :image
   
   validates :name, presence: true, format: { with: /\A[\w\s]+\z/, message: "only allows letters, numbers, and spaces" }
-  validates :size, presence: true
+
   validates :color, presence: true
   validates :price, presence: true, numericality: { only_float: true }
   validates :material, presence: true

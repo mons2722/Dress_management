@@ -1,0 +1,59 @@
+/* Apply styles to the form container */
+.comment-form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  /* Style the form headings */
+  .comment-form h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #343a40;
+    text-align: center;
+  }
+  
+  /* Style form groups (labels and inputs) */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Style form labels */
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    color: #343a40;
+  }
+  
+  /* Style form inputs */
+  .form-group input[type="text"],
+  .form-group input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  
+  /* Style form buttons */
+  .button-container {
+    text-align: center;
+  }
+  
+  .button-container input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button-container input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  

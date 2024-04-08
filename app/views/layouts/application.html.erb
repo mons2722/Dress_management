@@ -136,6 +136,69 @@
   background-color: pink !important; /* Change the background color as needed */
   color: white !important; /* Change the text color as needed */
   }
+
+  /* Styles for the search bar */
+  .search-bar {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-bar form {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .search-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    background-color: #f2f2f2;
+    outline: none;
+  }
+
+  .search-bar input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .search-bar input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  .auth-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+.auth-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #007bff; /* Change the background color as needed */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: #0056b3; /* Change the hover background color as needed */
+}
+
+.header {
+  position: relative; 
+}
+
   </style>
 </head>
 <body>
@@ -155,7 +218,25 @@
   </ul>
 </nav>
   </aside>
+  <div class="header">
+  <!-- Search bar for dresses -->
+  <div class="search-bar">
+    <%= form_tag(dresses_path, method: :get) do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search for dresses" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  </div>
   
+  <!-- Login and Sign-up buttons -->
+<div class="auth-buttons">
+  <% if current_user %>
+    <%= link_to "Sign Out", logout_path, method: :delete, class: "auth-button" %>
+  <% else %>
+    <%= link_to "Sign In", login_path, class: "auth-button" %>
+    <%= link_to "Sign Up", sign_up_path, class: "auth-button" %>
+  <% end %>
+</div>
+</div>
   <% flash.each do |type, message| %>
     <div class="flash-container">
       <div class="flash-message flash-<%= type %>">
